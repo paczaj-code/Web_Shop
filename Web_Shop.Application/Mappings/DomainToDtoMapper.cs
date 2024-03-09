@@ -26,5 +26,22 @@ namespace Web_Shop.Application.Mappings
 
             return getSingleCustomerDTO;
         }
+
+        public static GetSingleProductDTO MapGetSingleProductDTO(this Product domainCustomer)
+        {
+            if (domainCustomer == null)
+                throw new ArgumentNullException(nameof(domainCustomer));
+
+            GetSingleProductDTO getSingleProductDTO = new()
+            {
+               Description = domainCustomer.Description,
+               IdProduct = domainCustomer.IdProduct,
+               Name = domainCustomer.Name,
+               Price = domainCustomer.Price,
+               Sku = domainCustomer.Sku,
+            };
+
+            return getSingleProductDTO;
+        }
     }
 }

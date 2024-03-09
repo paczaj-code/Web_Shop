@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WWSI_Shop.Persistence.MySQL.Context;
+using Web_Shop.Persistence.MySQL.Services;
 
 namespace Web_Shop.Persistence.MySQL.Extensions
 {
@@ -16,6 +17,8 @@ namespace Web_Shop.Persistence.MySQL.Extensions
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
+
+            services.AddTransient<DataGenerator>();
         }
     }
 }

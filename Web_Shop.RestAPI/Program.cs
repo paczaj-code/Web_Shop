@@ -3,6 +3,8 @@ using Web_Shop.Application.Extensions;
 using Web_Shop.Application.Utils;
 using FluentValidation.AspNetCore;
 using Web_Shop.Persistence.UOW.Interfaces;
+using WWSI_Shop.Persistence.MySQL.Context;
+using Web_Shop.Persistence.MySQL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,12 +31,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    using (var scope = app.Services.CreateScope())
-    {
-        await CrmContextSeed.SeedAsync(scope.ServiceProvider.GetRequiredService<IUnitOfWork>(),
-                                            scope.ServiceProvider.GetRequiredService<ILoggerFactory>());
-    }
+
+    
+    //{
+    //    await CrmContextSeed.SeedAsync(scope.ServiceProvider.GetRequiredService<IUnitOfWork>(),
+    //                                        scope.ServiceProvider.GetRequiredService<ILoggerFactory>());
+    //}
 }
+
+//using var scope = app.Services.CreateScope();
+//var dbContext = scope.ServiceProvider.GetService<WwsishopContext>();
+//DataGenerator.Seed(dbContext);
 
 app.UseAuthorization();
 
